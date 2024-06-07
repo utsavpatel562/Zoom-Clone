@@ -1,30 +1,28 @@
-# Zoom Clone
+# Zoom Clone 🚀
 
 A feature-rich Zoom clone built with modern technologies such as TypeScript, Next.js, Tailwind CSS, Shadcn, GetStream, Clerk, and Node.js.
 
-## Features
+## Features ✨
 
-- User Authentication with Clerk
-- Real-time messaging with GetStream
-- Video conferencing
-- Responsive UI with Tailwind CSS
-- Server-side rendering with Next.js
+- 🔒 User Authentication with Clerk
+- 💬 Real-time messaging with GetStream
+- 📹 Video conferencing
+- 📱 Responsive UI with Tailwind CSS
+- ⚡ Server-side rendering with Next.js
 
-## Tech Stack
+## Tech Stack 🛠️
 
 - **Frontend**: TypeScript, Next.js, Tailwind CSS, Shadcn
 - **Backend**: Node.js
 - **Authentication**: Clerk
 - **Real-time Messaging**: GetStream
 
-## Installation
-
-### Prerequisites
+### Prerequisites ✅
 
 - Node.js (v14.x or later)
 - npm or yarn
 
-### Steps
+### Steps 📝
 
 1. **Clone the repository:**
    ```bash
@@ -32,7 +30,7 @@ A feature-rich Zoom clone built with modern technologies such as TypeScript, Nex
    cd zoom-clone
    
 
-### Install dependencies
+### Install dependencies 📦
 ```bash
 npm install
 # or
@@ -47,15 +45,15 @@ CLERK_API_KEY=your-clerk-api-key
 STREAM_API_KEY=your-getstream-api-key
 STREAM_API_SECRET=your-getstream-api-secret
 ```
-### Usage
-User Authentication
+### Usage 🚀
+User Authentication 🔐
 <li>Sign up or log in using Clerk for user authentication.</li>
 Messaging
 <li>Real-time messaging is enabled using GetStream.</li>
 Video Conferencing
 <li>Start or join a video call session.</li>
 
-### Project Structure
+### Project Structure 🗂️
 ```bash
 .
 ├── components    # Reusable UI components
@@ -70,13 +68,13 @@ Video Conferencing
 └── tsconfig.json # TypeScript configuration
 ```
 
-### Contributing
+### Contributing 🤝
 Contributions are welcome! Please fork the repository and create a pull request.
 
-### License
+### License 📄
 This project is licensed under the MIT License.
 
-### Acknowledgements
+### Acknowledgements 🙌
 <ul>
   <li>Next.js</li>
   <li>Tailwind CSS</li>
@@ -86,6 +84,6 @@ This project is licensed under the MIT License.
   <li>Node.js</li>
 </ul>
 
-### Contact
+### Contact 📧
 If you have any questions or feedback, please reach out to me at utsavpatel562@gmail.com
 Replace the placeholder values with your actual information where necessary. <br> This README provides a comprehensive overview and instructions for your Zoom Clone project.
