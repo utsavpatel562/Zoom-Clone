@@ -26,7 +26,7 @@ A feature-rich Zoom clone built with modern technologies such as TypeScript, Nex
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/your-username/zoom-clone.git
+   git clone https://github.com/utsavpatel562/zoom-clone.git
    cd zoom-clone
    
 
