@@ -36,7 +36,7 @@ const MeetingTypeList = () => {
           img="/icons/add-meeting.svg"
           title="New Meeting"
           description="Start an instant meeting"
-          handleClick={() => router.push("/recordings")}
+          handleClick={() => setMeetingState("isJoiningMeeting")}
           className="bg-yellow-1"
         />
       </section>
