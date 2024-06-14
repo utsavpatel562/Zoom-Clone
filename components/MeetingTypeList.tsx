@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import MeetingModal from "./MeetingModal";
 
 const MeetingTypeList = () => {
-  const router = useRouter;
+  const router = useRouter();
   const [meetingState, setMeetingState] = useState<
     "isScheduleMeeting" | "isJoiningMeeting" | "isInstantMeeting" | undefined
   >();
