@@ -6,6 +6,13 @@ import React, { useEffect, useState } from "react";
 
 const MeetingSetup = () => {
   const [isMicCamToggledOn, setIsMicCamToggleOn] = useState(false);
+
+  const call = useCall();
+
+  if (!call) {
+    throw new Error("usecall must be used within StreamCall component");
+  }
+
   useEffect(() => {
     if (isMicCamToggledOn) {
       call?.camera.disable();
@@ -14,8 +21,6 @@ const MeetingSetup = () => {
       call?.camera.enable();
       call?.microphone.enable();
     }
-
-    const call = useCall();
   }, [isMicCamToggledOn, call?.camera, call?.microphone]);
   return (
     <>
