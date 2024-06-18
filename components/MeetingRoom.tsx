@@ -1,5 +1,8 @@
+import { cn } from "@/lib/utils";
 import {
   Call,
+  CallControls,
+  CallParticipantsList,
   PaginatedGridLayout,
   SpeakerLayout,
 } from "@stream-io/video-react-sdk";
@@ -27,7 +30,16 @@ const MeetingRoom = () => {
           <div className="flex size-full max-w-[1000px] items-center">
             <CallLayout />
           </div>
-          <div className="h-[calc(100vh-86px)] hidden ml-2"></div>
+          <div
+            className={cn("h-[calc(100vh-86px)] hidden ml-2", {
+              "show-block": showParticipants,
+            })}
+          >
+            <CallParticipantsList onClose={() => setShowParticipants(false)} />
+          </div>
+        </div>
+        <div className="fixed bottom-0 flex w-full items-center justify-center gap-5 ">
+          <CallControls />
         </div>
       </section>
     </>
