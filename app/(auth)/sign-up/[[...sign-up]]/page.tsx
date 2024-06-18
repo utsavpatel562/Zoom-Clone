@@ -1,3 +1,5 @@
+// Register or SignUp Form using Clerk with Auth and User Management
+
 import { SignUp } from "@clerk/nextjs";
 import React from "react";
 
