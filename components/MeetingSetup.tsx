@@ -1,3 +1,4 @@
+// Code by Utsav Patel
 "use client";
 
 import { VideoPreview, useCall } from "@stream-io/video-react-sdk";
@@ -6,10 +7,16 @@ import React, { useEffect, useState } from "react";
 const MeetingSetup = () => {
   const [isMicCamToggledOn, setIsMicCamToggleOn] = useState(false);
   useEffect(() => {
-    if(isMicCamToggledOn)
+    if (isMicCamToggledOn) {
+      call?.camera.disable();
+      call?.microphone.disable();
+    } else {
+      call?.camera.enable();
+      call?.microphone.enable();
+    }
 
     const call = useCall();
-  }, [isMicCamToggledOn, call?.camera, call.microphone]);
+  }, [isMicCamToggledOn, call?.camera, call?.microphone]);
   return (
     <>
       <div className="flex h-screen w-full flex-col items-center justify-center gap-3 text-white">
