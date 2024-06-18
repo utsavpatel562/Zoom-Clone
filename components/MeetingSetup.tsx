@@ -1,6 +1,7 @@
 // Code by Utsav Patel
 
 "use client";
+
 import {
   DeviceSettings,
   VideoPreview,
