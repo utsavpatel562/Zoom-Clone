@@ -13,6 +13,7 @@ import {
   Call,
   CallControls,
   CallParticipantsList,
+  CallStatsButton,
   PaginatedGridLayout,
   SpeakerLayout,
 } from "@stream-io/video-react-sdk";
@@ -59,14 +60,25 @@ const MeetingRoom = () => {
             </div>
 
             <DropdownMenuContent className="border-dark-1 bg-dark-1 text-white">
-              <DropdownMenuLabel>My Account</DropdownMenuLabel>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem>Profile</DropdownMenuItem>
-              <DropdownMenuItem>Billing</DropdownMenuItem>
-              <DropdownMenuItem>Team</DropdownMenuItem>
-              <DropdownMenuItem>Subscription</DropdownMenuItem>
+              {["Grid", "Speaker-Left", "Speaker-Right"].map((item, index) => (
+                <div key={index}>
+                  <DropdownMenuItem
+                    className="cursor-pointer"
+                    onClick={() => {
+                      setLayout(item.toLowerCase() as CallLayoutType);
+                    }}
+                  >
+                    {item}
+                  </DropdownMenuItem>
+                  <DropdownMenuSeparator className="border-dark-1" />
+                </div>
+              ))}
             </DropdownMenuContent>
           </DropdownMenu>
+          <CallStatsButton />
+          <button onClick={() => setShowParticipants((prev) => !prev)}>
+            <div className="cursor-pointer rounded-2xl"></div>
+          </button>
         </div>
       </section>
     </>
