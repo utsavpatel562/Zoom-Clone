@@ -16,7 +16,7 @@ interface MeetingModalProps {
   onClose: () => void;
   title: string;
   className?: string;
-  children?: string;
+  children?: ReactNode;
   handleClick?: () => void;
   buttonText: string;
   image?: string;
