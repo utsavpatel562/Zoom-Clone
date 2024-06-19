@@ -8,6 +8,7 @@ import MeetingModal from "./MeetingModal";
 import { useUser } from "@clerk/nextjs";
 import { Call, useStreamVideoClient } from "@stream-io/video-react-sdk";
 import { useToast } from "./ui/use-toast";
+import { Textarea } from "./ui/textarea";
 
 const MeetingTypeList = () => {
   const router = useRouter();
@@ -96,12 +97,41 @@ const MeetingTypeList = () => {
           handleClick={() => setMeetingState("isJoiningMeeting")}
           className="bg-yellow-1"
         />
-        {!callDetails? ( 
+        {!callDetails ? (
           <MeetingModal
-          isOpen={meetingState === "isScheduleMeeting"}
-          onClose={() => setMeetingState(undefined)}
-          title="Create Meeting"
-          handleClick={createMeeting}
+            isOpen={meetingState === "isScheduleMeeting"}
+            onClose={() => setMeetingState(undefined)}
+            title="Create Meeting"
+            handleClick={createMeeting}
+          >
+            <div className="flex flex-col gap-2.5">
+              <label className="text-base text-normal leading-[22px] text-sky-2">
+                Add a description
+              </label>
+              <Textarea
+                className="border-none bg-dark-3 focus-visible:ring-0 focus-visible:ring-offset-0"
+                onChange={(e) => {
+                  setValues({ ...values, description: e.target.value });
+                }}
+              />
+            </div>
+          </MeetingModal>
+        ) : (
+          <MeetingModal
+            isOpen={meetingState === "isScheduleMeeting"}
+            onClose={() => setMeetingState(undefined)}
+            title="Meeting created"
+            className="text-center"
+            buttonText="Start Meeting"
+            handleClick={() => {
+              // navigator.clipboard.writeText
+              //(meetingLink);
+              //toast ({title: 'Link copied'});
+            }}
+            image={"/icons/checked.svg"}
+            buttonIcon="/icons/copy.svg"
+            className="text-center"
+            buttonText="Copy Meeting Link"
           />
         )}
         <MeetingModal
