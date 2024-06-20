@@ -1,52 +1,52 @@
-"use client";
+import { useEffect, useState } from 'react';
+import { useUser } from '@clerk/nextjs';
+import { Call, useStreamVideoClient } from '@stream-io/video-react-sdk';
 
-import { useGetCalls } from "@/hooks/useGetCalls";
-import { Call, CallRecording } from "@stream-io/video-react-sdk";
-import { useRouter } from "next/navigation";
-import React, { useState } from "react";
-import MeetingCard from "./MeetingCard";
+export const useGetCalls = () => {
+  const { user } = useUser();
+  const client = useStreamVideoClient();
+  const [calls, setCalls] = useState<Call[]>();
+  const [isLoading, setIsLoading] = useState(false);
 
-const CallList = ({ type }: { type: "ended" | "upcoming" | "recordings" }) => {
-  const { endedCalls, upcomingCalls, callRecordings, isLoading } =
-    useGetCalls();
-  const router = useRouter();
+  useEffect(() => {
+    const loadCalls = async () => {
+      if (!client || !user?.id) return;
+      
+      setIsLoading(true);
 
-  const [recordings, setRecordings] = useState<CallRecording[]>([]);
-  const getCalls = () => {
-    switch (type) {
-      case "ended":
-        return endedCalls;
-      case "recordings":
-        return recordings;
-      case "upcoming":
-        return upcomingCalls;
-      default:
-        return [];
-    }
-  };
-  const getNoCallsMessage = () => {
-    switch (type) {
-      case "ended":
-        return "No Previous Calls";
-      case "recordings":
-        return "No Recordings";
-      case "upcoming":
-        return "No Upcoming Meetings";
-      default:
-        return "";
-    }
-  };
-  const calls = getCalls();
-  const noCallsMessage = getNoCallsMessage();
-  return (
-    <div className="grid grid-cols-1 gap-5 xl:grid-cols-2">
-      {calls && calls.length > 0 ? (
-        calls.map((meeting: Call | CallRecording) => <MeetingCard />)
-      ) : (
-        <h1>{noCallsMessage}</h1>
-      )}
-    </div>
-  );
+      try {
+        // https://getstream.io/video/docs/react/guides/querying-calls/#filters
+        const { calls } = await client.queryCalls({
+          sort: [{ field: 'starts_at', direction: -1 }],
+          filter_conditions: {
+            starts_at: { $exists: true },
+            $or: [
+              { created_by_user_id: user.id },
+              { members: { $in: [user.id] } },
+            ],
+          },
+        });
+
+        setCalls(calls);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    loadCalls();
+  }, [client, user?.id]);
+
+  const now = new Date();
+
+  const endedCalls = calls?.filter(({ state: { startsAt, endedAt } }: Call) => {
+    return (startsAt && new Date(startsAt) < now) || !!endedAt
+  })
+
+  const upcomingCalls = calls?.filter(({ state: { startsAt } }: Call) => {
+    return startsAt && new Date(startsAt) > now
+  })
+
+  return { endedCalls, upcomingCalls, callRecordings: calls, isLoading }
 };
-
-export default CallList;
