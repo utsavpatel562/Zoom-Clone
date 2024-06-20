@@ -1,7 +1,6 @@
 import { useUser } from "@clerk/nextjs";
 import { Call, useStreamVideoClient } from "@stream-io/video-react-sdk"
 import { useEffect, useState } from "react"
-import { newDate } from "react-datepicker/dist/date_utils";
 
 export const useGetCalls = ()=>{
     const [calls, setCalls] = useState<Call[]>([]);
@@ -35,7 +34,7 @@ export const useGetCalls = ()=>{
         loadCalls();
     }, [client, user?.id])
    
-    const now = newDate();
+    const now = new Date();
 
     const endedCalls = calls.filter(({state:{startsAt, endedAt}}: Call)=>{
         return (startsAt && new Date(startsAt) < now || !!endedAt)
@@ -47,7 +46,7 @@ export const useGetCalls = ()=>{
     return {
      endedCalls,
      upcomingCalls,
-    recordings: calls,
-    isLoading,
+     callRecordings: calls,
+     isLoading,
     }
 }
