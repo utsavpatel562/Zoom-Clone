@@ -1,6 +1,6 @@
 # Zoom Clone 🚀
 
-Screenshot 2024-06-20 190145.png
+<img src="public/Screenshot 2024-06-20 190145.png">
 
 A feature-rich Zoom clone built with modern technologies such as TypeScript, Next.js, Tailwind CSS, Shadcn, GetStream, Clerk, and Node.js.
 
