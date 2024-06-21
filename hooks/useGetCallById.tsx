@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { Call, useStreamVideoClient } from "@stream-io/video-react-sdk";
 import { useEffect, useState } from "react";
 
@@ -23,3 +24,32 @@ export const useGetCallById = (id: string | string[]) => {
     return { call, isCallLoading };
   }
 };
+=======
+// Code by Utsav Patel
+
+import { Call, useStreamVideoClient } from "@stream-io/video-react-sdk";
+import { useEffect, useState } from "react";
+
+export const useGetCallById = (id: string | string[]) => {
+  const [call, setCall] = useState<Call>();
+  const [isCallLoading, setIsCallLoading] = useState(true);
+  const client = useStreamVideoClient();
+
+  useEffect(() => {
+    if (!client) return;
+    const loadCall = async () => {
+      const { calls } = await client.queryCalls({
+        filter_conditions: {
+          id,
+        },
+      });
+      if (calls.length > 0) setCall(calls[0]);
+      setIsCallLoading(false);
+    };
+    loadCall();
+  }, [client, id]);
+  {
+    return { call, isCallLoading };
+  }
+};
+>>>>>>> 3a16bc81b4ffe0c182d842385f865c6cd1fda42c
