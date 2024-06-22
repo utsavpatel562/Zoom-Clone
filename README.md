@@ -18,7 +18,7 @@ A feature-rich Zoom clone built with modern technologies such as TypeScript, Nex
 - **Backend**: Node.js
 - **Authentication**: Clerk
 - **Real-time Messaging**: GetStream
-- - **Deployment**: Vercel
+- **Deployment**: Vercel
 
 ### Prerequisites ✅
 
