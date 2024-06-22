@@ -10,6 +10,7 @@ A feature-rich Zoom clone built with modern technologies such as TypeScript, Nex
 - 📹 Video conferencing
 - 📱 Responsive UI with Tailwind CSS
 - ⚡ Server-side rendering with Next.js
+- 🚀 Deployment: Deployed using Vercel for seamless deployment and hosting.
 
 ## Tech Stack 🛠️
 
@@ -17,6 +18,7 @@ A feature-rich Zoom clone built with modern technologies such as TypeScript, Nex
 - **Backend**: Node.js
 - **Authentication**: Clerk
 - **Real-time Messaging**: GetStream
+- - **Deployment**: Vercel
 
 ### Prerequisites ✅
 
@@ -83,6 +85,7 @@ This project is licensed under the MIT License.
   <li>GetStream</li>
   <li>Clerk</li>
   <li>Node.js</li>
+  <li>Vercel</li>
 </ul>
 
 ### Contact 📧
