@@ -29,16 +29,9 @@ export default function RootLayout({
               logoImageUrl: "/icons/logo.svg",
               socialButtonsVariant: "iconButton",
             },
-            variables: {
-              colorText: "#fff",
-              colorPrimary: "#0E78F9",
-              colorBackground: "#1c1f2e",
-              colorInputBackground: "#252a41",
-              colorInputText: "#fff",
-            },
           }}
         >
-          <body className={`${inter.className} bg-dark-2`}>
+          <body className={`${inter.className} bg-slate-900 `}>
             {children}
             <Toaster />
           </body>
