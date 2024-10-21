@@ -8,7 +8,7 @@ import "react-datepicker/dist/react-datepicker.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "ZOOM CLONE (UTSAV PATEL)",
+  title: "ZOOM CLONE",
   description: "Video Calling App",
   icons: {
     icon: "/icons/logo.svg",
@@ -31,7 +31,7 @@ export default function RootLayout({
             },
           }}
         >
-          <body className={`${inter.className} bg-slate-900 `}>
+          <body className={`${inter.className} bg-dark-2`}>
             {children}
             <Toaster />
           </body>

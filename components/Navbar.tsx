@@ -3,30 +3,56 @@ import Link from "next/link";
 import React from "react";
 import MobileNav from "./MobileNav";
 import "@/components/navbar.css";
-import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
+import {
+  SignInButton,
+  SignOutButton,
+  SignedIn,
+  SignedOut,
+} from "@clerk/nextjs";
+import { Button } from "./ui/button";
 
 const Navbar = () => {
   return (
     <>
-      <nav className="flex flex-between fixed z-50 w-full bg-dark-1 px-6 py-4 lg:px-10">
-        <Link href="/" className="flex items-center gap-1">
+      <nav className="flex justify-between items-center fixed z-50 w-full bg-dark-1 px-6 py-4 lg:px-10">
+        {/* Logo and Branding */}
+        <Link href="/" className="flex items-center gap-2">
           <Image
             src="/icons/logo.svg"
             width={32}
             height={32}
-            className="max-sm:size-10"
+            className="w-8 h-8"
             alt="Zoom Clone"
           />
-          <p className="text-[26px] font-extrabold text-white max-sm:hidden ">
+          <p className="text-[20px] lg:text-[26px] font-extrabold text-white hidden sm:block">
             Zoom Clone
           </p>
         </Link>
-        <div className="flex-between gap-5">
-          {
+
+        {/* Navigation and Authentication */}
+        <div className="flex items-center space-x-4 sm:space-x-8">
+          {/* Mobile Logout Button */}
+          <SignedIn>
+            <Button className="bg-dark-2 border border-gray-500 text-slate-100 shadow-slate-700 font-semibold sm:hidden">
+              <SignOutButton>Logout</SignOutButton>
+            </Button>
+          </SignedIn>
+
+          {/* Desktop SignIn/SignOut */}
+          <div className="hidden sm:block">
             <SignedIn>
-              <UserButton />
+              <Button className="bg-dark-2 border border-gray-500 text-slate-100 shadow-slate-700 shadow-sm font-semibold">
+                <SignOutButton>Logout</SignOutButton>
+              </Button>
             </SignedIn>
-          }
+            <SignedOut>
+              <SignInButton>
+                <Button className="bg-blue-500 text-white">Sign In</Button>
+              </SignInButton>
+            </SignedOut>
+          </div>
+
+          {/* Mobile Navigation Menu */}
           <MobileNav />
         </div>
       </nav>
