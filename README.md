@@ -1,4 +1,4 @@
-# Zoom Clone 🚀
+# Zoom Clone 🚀 - A Project by Utsav Patel
 <img src="public/Screenshot 2024-06-24 183450.png" style="border-radius:20px;">
 
 A feature-rich Zoom clone built with modern technologies such as TypeScript, Next.js, Tailwind CSS, Shadcn, GetStream, Clerk, and Node.js.
