@@ -87,6 +87,3 @@ This project is licensed under the MIT License.
   <li>Node.js</li>
   <li>Vercel</li>
 </ul>
-
-### Contact 📧
-If you have any questions or feedback, please reach out to me at utsavpatel562@gmail.com
